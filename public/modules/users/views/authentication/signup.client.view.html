@@ -1,0 +1,53 @@
+<section class="row signup-container section">
+
+    <div class="title-group">
+        <h1>Create Account</h1>
+    </div>
+
+    <div class="col-xs-offset-2 col-xs-8 col-md-offset-5 col-md-2 signup-form-container">
+        <p class="form-info">Please fill in the form below. All fields are mandatory.</p>
+
+        <form name="userForm" data-ng-submit="signup(userForm)" data-ng-class="{'submitted': error}"
+              class="signin form-horizontal" novalidate autocomplete="off">
+            <fieldset>
+                <div class="form-group">
+                    <input type="text" data-ng-required="true" id="firstName" name="firstName" class="form-control"
+                           data-ng-model="credentials.firstName" placeholder="First Name" data-ng-maxlength="50" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <input type="text" data-ng-required="true" id="lastName" name="lastName" class="form-control"
+                           data-ng-model="credentials.lastName" placeholder="Last Name" data-ng-maxlength="50" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" clear-field-error block-space name="email"
+                           data-ng-change="credentials.email = credentials.email.split(' ').join('')"
+                           class="form-control" data-ng-model="credentials.email" placeholder="Email"
+                           data-ng-required="true"
+                           data-ng-pattern="/^[_a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,4})$/"
+                           data-ng-maxlength="50" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <input type="password" id="password" block-space name="password" class="form-control"
+                           data-ng-change="credentials.password = credentials.password.split(' ').join('')"
+                           data-ng-model="credentials.password" placeholder="Password" data-ng-required="true"
+                           data-ng-minlength="6">
+                </div>
+                <div class="form-group checkbox-container">
+                    <input data-ng-model="credentials.agreement" type="checkbox" id="agreement" name="agreement"
+                           data-ng-required="true"/>
+                    <label data-ng-class="{'checkbox-label-error': userForm.agreement.$invalid}">
+                        I agree with the <a ui-sref="terms-and-conditions">Terms and Conditions.</a> </label>
+                </div>
+                <div class="text-center form-group button-container">
+                    <button type="submit" class="btn btn-large btn-primary">Create account</button>
+
+                </div>
+
+                <div data-ng-show="error" class="bg-danger">
+                    {{ error }}
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</section>
