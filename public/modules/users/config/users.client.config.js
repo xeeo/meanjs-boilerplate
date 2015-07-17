@@ -27,7 +27,7 @@ angular.module('users').config(['$httpProvider',
             }
         ]);
     }
-]).run(['$rootScope', 'Acl', 'Authentication'
+]).run(['$rootScope', 'Acl', 'Authentication',
     function ($rootScope, Acl, Authentication) {
         $rootScope.$on('$stateChangeStart', Acl.handleAuthenticationRedirects);
         $rootScope.authentication = Authentication;
