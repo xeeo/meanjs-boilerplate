@@ -16,7 +16,7 @@ angular.module(ApplicationConfiguration.applicationModuleName)
            $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
                $rootScope.bodyClasses = {};
                var className = toState.name;
-               className     = className.replace('.', '-');
+               className     = className.replace(/\s/g, '-');
 
                $rootScope.bodyClasses[className] = true;
            });
