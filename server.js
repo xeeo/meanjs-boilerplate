@@ -7,13 +7,6 @@ var init     = require('./config/init')(),
     mongoose = require('mongoose'),
     chalk    = require('chalk');
 
-if (config.nodeTime) {
-    require('nodetime').profile({
-        accountKey: config.nodeTime,
-        appName   : config.app.title
-    });
-}
-
 /**
  * Main application entry file.
  * Please note that the order of loading is important.

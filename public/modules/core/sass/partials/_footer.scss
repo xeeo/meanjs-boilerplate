@@ -1,0 +1,49 @@
+.footer {
+    background-color: #ececec;
+    text-align: center;
+    color: #000000;
+    clear: both;
+    position: relative;
+    height: 75px;
+    margin-top: -75px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.footer-nav {
+    padding: 10px 0 10px 0;
+    font-size: 12px;
+    list-style: none;
+
+    li {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 7px;
+        margin-left: 7px;
+        position: relative;
+
+        &:after {
+            content: "|";
+            position: absolute;
+            right: -9px;
+            top: -1px;
+            z-index: 9;
+            display: block;
+
+        }
+
+        &:last-child:after {
+            display: none;
+        }
+    }
+
+    a {
+        color: #fff;
+        padding: 0 5px 0 5px;
+    }
+}
+
+.footer-copy {
+    font-size: 12px;
+    margin: 0;
+}

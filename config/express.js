@@ -33,6 +33,7 @@ module.exports = function(db) {
 	});
 
 	// Setting application local variables
+	app.locals.baseUrl = config.baseUrl;
 	app.locals.title = config.app.title;
 	app.locals.description = config.app.description;
 	app.locals.keywords = config.app.keywords;

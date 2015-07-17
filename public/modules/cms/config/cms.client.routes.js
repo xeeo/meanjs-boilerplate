@@ -1,29 +1,26 @@
 'use strict';
 
 // Setting up route
-angular.module('core')
+angular.module('cms')
     .config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
+            //$locationProvider.html5Mode(true).hashPrefix('!');
+
             // Redirect to home view when route not found
             $urlRouterProvider.otherwise('/');
 
             // Home state routing
             $stateProvider.
-                state('main', {
+                state('home', {
                     url        : '/',
                     controller : 'HomeController',
-                    templateUrl: 'modules/core/views/home.client.view.html',
+                    templateUrl: 'modules/cms/views/home.client.view.html',
                     seo        : {
                         title      : '',
                         description: '',
                         keywords   : ''
                     }
                 });
-        }
-    ])
-    .run(['$rootScope', '$state',
-        function ($rootScope, $state) {
-            $rootScope.$state = $state;
         }
     ])
 ;

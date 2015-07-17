@@ -1,11 +1,9 @@
 'use strict';
 
-angular.module('core').controller('FooterController', ['$scope', 'Authentication', 'Menus',
-    function ($scope, Authentication, Menus) {
-        $scope.authentication = Authentication;
+angular.module('core').controller('FooterController', ['$scope', 'Menus',
+    function ($scope, Menus) {
         $scope.isCollapsed    = false;
         $scope.menu           = Menus.getMenu('footer');
-
         $scope.currentYear    = new Date().getFullYear();
 
         $scope.toggleCollapsibleMenu = function () {

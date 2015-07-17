@@ -1,16 +1,16 @@
 'use strict';
 
 //Menu service used for managing  menus
-angular.module('core').service('Menus', [
+angular.module('core').service('Menus', ['$state',
 
-	function() {
+	function($state) {
 		// Define a set of default roles
 		this.defaultRoles = ['*'];
 
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision 
+		// A private function for rendering decision
 		var shouldRender = function(user) {
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
@@ -79,32 +79,63 @@ angular.module('core').service('Menus', [
 		};
 
 		// Add menu item object
-		this.addMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute, isPublic, roles, position) {
+		this.addMenuItem = function(menuId, title, state, classes, externalUrl, isPublic, roles, position) {
 			// Validate that the menu exists
 			this.validateMenuExistance(menuId);
 
-			// Push new menu item
-			this.menus[menuId].items.push({
-				title: menuItemTitle,
-				link: menuItemURL,
-				menuItemType: menuItemType || 'item',
-				menuItemClass: menuItemType,
-				uiRoute: menuItemUIRoute || ('/' + menuItemURL),
+			var url = externalUrl || '/';
+
+            if (state) {
+                var stateObj = $state.get(state);
+                url          = '/#!' + stateObj.url;
+            }
+
+            // Push new menu item
+            this.menus[menuId].items.push({
+                title:    title,
+                url:      url,
+                state:    state,
+                classes:  classes || {'item':true},
 				isPublic: ((isPublic === null || typeof isPublic === 'undefined') ? this.menus[menuId].isPublic : isPublic),
 				roles: ((roles === null || typeof roles === 'undefined') ? this.menus[menuId].roles : roles),
-				position: position || 0,
-				items: [],
+                position: position || 0,
+                items:    [],
 				shouldRender: shouldRender
-			});
+            });
 
 			// Return the menu object
 			return this.menus[menuId];
 		};
 
 		// Add submenu item object
-		this.addSubMenuItem = function(menuId, rootMenuItemURL, menuItemTitle, menuItemURL, menuItemUIRoute, isPublic, roles, position) {
+		this.addSubMenuItem = function(menuId, title, rootState, state, classes, externalUrl, isPublic, roles, position) {
 			// Validate that the menu exists
 			this.validateMenuExistance(menuId);
+
+
+			var url = externalUrl || '/';
+
+            if (state) {
+                var stateObj = $state.get(state);
+                url          = '/#!' + stateObj.url;
+            }
+
+            // Search for menu item
+            for (var itemIndex in this.menus[menuId].items) {
+                if (this.menus[menuId].items[itemIndex].state === rootState) {
+                    // Push new submenu item
+                    this.menus[menuId].items[itemIndex].items.push({
+                        title:    title,
+                        url:      url,
+                        state:    state,
+                        classes:  classes || {'item':true},
+						isPublic: ((isPublic === null || typeof isPublic === 'undefined') ? this.menus[menuId].items[itemIndex].isPublic : isPublic),
+						roles: ((roles === null || typeof roles === 'undefined') ? this.menus[menuId].items[itemIndex].roles : roles),
+						position: position || 0,
+						shouldRender: shouldRender
+                    });
+                }
+            }
 
 			// Search for menu item
 			for (var itemIndex in this.menus[menuId].items) {

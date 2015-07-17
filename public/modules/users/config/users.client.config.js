@@ -27,9 +27,10 @@ angular.module('users').config(['$httpProvider',
             }
         ]);
     }
-]).run(['$rootScope', 'Acl',
-    function ($rootScope, Acl) {
+]).run(['$rootScope', 'Acl', 'Authentication'
+    function ($rootScope, Acl, Authentication) {
         $rootScope.$on('$stateChangeStart', Acl.handleAuthenticationRedirects);
-        $rootScope.acl = Acl;
+        $rootScope.authentication = Authentication;
+        $rootScope.acl            = Acl;
     }
 ]);

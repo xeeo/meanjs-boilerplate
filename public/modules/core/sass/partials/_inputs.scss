@@ -1,0 +1,32 @@
+.submitted {
+  .ng-invalid.ng-pristine, .ng-invalid.ng-dirty {
+    border-color: #FA787E !important;
+  }
+
+  .checkbox-label-error {
+    color: #FF0000 !important;
+  }
+}
+
+.ng-valid.ng-dirty {
+  border-color: #78FA89 !important;
+}
+
+.ng-pristine {
+  border-color: #B5B5B5 !important;
+}
+
+
+.error, .bg-danger {
+  margin-bottom: 30px !important;
+}
+
+.error {
+  input, textarea {
+    border-color: red !important;
+  }
+
+  label {
+    color: red;
+  }
+}

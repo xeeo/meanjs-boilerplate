@@ -1,7 +1,7 @@
 'use strict';
 
 // Configuring the Articles module
-angular.module('core').run(['Menus',
+angular.module('cms').run(['Menus',
     function (Menus) {
     }
 ]);

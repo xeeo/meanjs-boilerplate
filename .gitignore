@@ -4,6 +4,8 @@
 npm-debug.log
 node_modules/
 public/lib
+public/css
+public/dist
 app/tests/coverage/
 .bower-*/
 .idea/

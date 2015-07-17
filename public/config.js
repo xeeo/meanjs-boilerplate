@@ -8,6 +8,7 @@ var ApplicationConfiguration = (function () {
         'ngResource',
         'ngCookies',
         'ngTouch',
+        'ngAnimate',
         'ngSanitize',
         'ui.router',
         'ui.bootstrap',

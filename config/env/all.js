@@ -6,7 +6,6 @@ module.exports = {
         description: 'A boilerplate for Mean Apps',
         keywords   : 'MEANJS Mean Boilerplate'
     },
-    nodeTime         : process.env.NODETIME_ACCOUNT_KEY || '',
     prerenderToken   : process.env.PRERENDER_TOKEN || '',
     baseUrl          : process.env.BASE_URL || '',
     port             : process.env.PORT || 3000,

@@ -23,18 +23,18 @@ module.exports = {
                 'public/lib/angular-ui-router/release/angular-ui-router.js',
                 'public/lib/html5shiv/dist/html5shiv.js',
                 'public/lib/angular-ui-utils/ui-utils.js',
-                'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+                'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+                'public/lib/modernizr/modernizr.js'
             ]
         },
         css  : [
-            'public/modules/**/css/*.css'
+            'public/css/core/sass/core.css'
         ],
         js   : [
             'public/config.js',
             'public/application.js',
             'public/modules/*/*.js',
             'public/modules/*/**/*.js'
-        ],
-        tests: []
+        ]
     }
 };
